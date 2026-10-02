@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>VuaAIVip Config</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #050805;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+}
+
+.container {
+    width: min(430px, 92%);
+    margin: 35px auto;
+    padding: 22px;
+
+    background: #080d09;
+    border: 1px solid #00ff66;
+    border-radius: 8px;
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #00ff66;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sub {
+    margin-top: 6px;
+    color: #07833c;
+    font-size: 10px;
+}
+
+/* TERMINAL */
+
+.terminal {
+    margin-top: 18px;
+    padding: 12px;
+
+    background: #000;
+    border: 1px solid #064d27;
+
+    font-size: 11px;
+    line-height: 1.7;
+
+    min-height: 100px;
+}
+
+.log {
+    color: #00c94f;
+}
+
+/* SECTION */
+
+.section {
+    margin-top: 20px;
+}
+
+.title {
+    margin-bottom: 10px;
+    color: #00c94f;
+    font-size: 11px;
+}
+
+/* GAME */
+
+.games {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.game input {
+    display: none;
+}
+
+.game label {
+    display: block;
+
+    padding: 14px;
+
+    text-align: center;
+
+    border: 1px solid #087b3a;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.game input:checked + label {
+    border-color: #00ff66;
+    background: #071b0d;
+}
+
+/* OPTIONS */
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 2px;
+
+    border-bottom: 1px solid #12351f;
+}
+
+.desc {
+    display: block;
+    margin-top: 3px;
+
+    color: #087b3a;
+    font-size: 9px;
+}
+
+/* SWITCH */
+
+.switch {
+    position: relative;
+
+    width: 52px;
+    height: 27px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+
+    border: 1px solid #087b3a;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 19px;
+    height: 19px;
+
+    left: 3px;
+    top: 3px;
+
+    background: #087b3a;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    border-color: #00ff66;
+}
+
+input:checked + .slider::before {
+    transform: translateX(25px);
+    background: #00ff66;
+}
+
+/* PROGRESS */
+
+.progress-box {
+    margin-top: 20px;
+}
+
+.progress {
+    height: 12px;
+
+    border: 1px solid #087b3a;
+    padding: 2px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+
+    background: #00ff66;
+}
+
+.progress-text {
+    margin-top: 6px;
+
+    text-align: right;
+    font-size: 10px;
+}
+
+/* BUTTON */
+
+.start {
+    width: 100%;
+
+    margin-top: 20px;
+    padding: 14px;
+
+    background: transparent;
+    color: #00ff66;
+
+    border: 1px solid #00ff66;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+/* STATUS */
+
+.status {
+    margin-top: 12px;
+    padding: 10px;
+
+    border: 1px solid #064d27;
+
+    text-align: center;
+    font-size: 10px;
+}
+
+#status {
+    color: #00ff66;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <div class="logo">
+            [ VuaAIVip ]
+        </div>
+
+        <div class="sub">
+            CONFIGURATION PANEL
+        </div>
+    </div>
+
+
+    <!-- TERMINAL -->
+
+    <div class="terminal" id="terminal">
+
+        <div class="log">
+            > SYSTEM READY
+        </div>
+
+        <div class="log">
+            > CONFIG ENGINE: READY
+        </div>
+
+        <div class="log">
+            > WAITING FOR COMMAND...
+        </div>
+
+    </div>
+
+
+    <!-- GAME -->
+
+    <div class="section">
+
+        <div class="title">
+            > SELECT GAME
+        </div>
+
+        <div class="games">
+
+            <div class="game">
+
+                <input
+                    type="radio"
+                    name="game"
+                    id="ffthg"
+                    value="FFTHG"
+                >
+
+                <label for="ffthg">
+                    FFTHG
+                </label>
+
+            </div>
+
+
+            <div class="game">
+
+                <input
+                    type="radio"
+                    name="game"
+                    id="ffmax"
+                    value="FFMAX"
+                >
+
+                <label for="ffmax">
+                    FFMAX
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONFIG -->
+
+    <div class="section">
+
+        <div class="title">
+            > SELECT FUNCTION
+        </div>
+
+
+        <!-- NHẸ TÂM -->
+
+        <div class="option">
+
+            <div>
+                NHẸ TÂM
+
+                <span class="desc">
+                    UI CONFIG
+                </span>
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="lightAim"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- FIX RUNG -->
+
+        <div class="option">
+
+            <div>
+                FIX RUNG
+
+                <span class="desc">
+                    UI CONFIG
+                </span>
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="fixShake"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- AIMLOCK -->
+
+        <div class="option">
+
+            <div>
+                AIMLOCK
+
+                <span class="desc">
+                    UI CONFIG
+                </span>
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="aimLock"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-box">
+
+        <div class="title">
+            > PROCESS
+        </div>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+
+        </div>
+
+        <div class="progress-text">
+
+            <span id="progressText">
+                0%
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- START -->
+
+    <button
+        class="start"
+        onclick="startProcess()">
+
+        [ BẮT ĐẦU CHẠY ]
+
+    </button>
+
+
+    <!-- STATUS -->
+
+    <div class="status">
+
+        STATUS:
+        <span id="status">
+            READY
+        </span>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function addLog(message) {
+
+    const terminal =
+        document.getElementById("terminal");
+
+    const line =
+        document.createElement("div");
+
+    line.className = "log";
+
+    line.textContent =
+        "> " + message;
+
+    terminal.appendChild(line);
+}
+
+
+function startProcess() {
+
+    const game =
+        document.querySelector(
+            'input[name="game"]:checked'
+        );
+
+    const lightAim =
+        document.getElementById(
+            "lightAim"
+        ).checked;
+
+    const fixShake =
+        document.getElementById(
+            "fixShake"
+        ).checked;
+
+    const aimLock =
+        document.getElementById(
+            "aimLock"
+        ).checked;
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    /*
+       Kiểm tra game
+    */
+
+    if (!game) {
+
+        status.textContent =
+            "VUI LÒNG CHỌN GAME";
+
+        addLog(
+            "ERROR: CHƯA CHỌN GAME"
+        );
+
+        return;
+    }
+
+
+    /*
+       Kiểm tra chức năng
+    */
+
+    if (
+        !lightAim &&
+        !fixShake &&
+        !aimLock
+    ) {
+
+        status.textContent =
+            "VUI LÒNG CHỌN CHỨC NĂNG";
+
+        addLog(
+            "ERROR: CHƯA CHỌN CHỨC NĂNG"
+        );
+
+        return;
+    }
+
+
+    /*
+       Bắt đầu
+    */
+
+    const progressBar =
+        document.getElementById(
+            "progressBar"
+        );
+
+    const progressText =
+        document.getElementById(
+            "progressText"
+        );
+
+
+    progressBar.style.width = "0%";
+    progressText.textContent = "0%";
+
+    status.textContent =
+        "RUNNING";
+
+
+    addLog(
+        "GAME: " + game.value
+    );
+
+    addLog(
+        "CONFIGURATION STARTED"
+    );
+
+
+    let progress = 0;
+
+
+    const timer =
+        setInterval(() => {
+
+            progress += 5;
+
+
+            if (progress > 100) {
+                progress = 100;
+            }
+
+
+            progressBar.style.width =
+                progress + "%";
+
+
+            progressText.textContent =
+                progress + "%";
+
+
+            if (progress === 25) {
+
+                addLog(
+                    "CHECKING CONFIG..."
+                );
+
+            }
+
+
+            if (progress === 50) {
+
+                addLog(
+                    "VALIDATING SETTINGS..."
+                );
+
+            }
+
+
+            if (progress === 75) {
+
+                addLog(
+                    "PROCESSING..."
+                );
+
+            }
+
+
+            if (progress === 100) {
+
+                clearInterval(timer);
+
+
+                addLog(
+                    "PROCESS COMPLETE"
+                );
+
+
+                status.textContent =
+                    "COMPLETE";
+
+            }
+
+        }, 100);
+
+}
+
+</script>
+
+</body>
+</html>
